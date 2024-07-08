@@ -31,12 +31,13 @@
           </div>
 
           <div class="d-flex justify-content-between align-items-center">
-            <button class="btn btn-primary">Comprar</button>
-            <div class="input-group">
-              <label for="quantity" class="me-1"></label>
-              <select id="quantity" class="form-select" aria-label="Cantidad">
-                <option *ngFor="let count of getCount(product.stock)" [value]="count">{{count}}</option>
-              </select>
+            <button class="btn btn-primary">Agregar</button>
+            <div class="input-group ms-3">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary quantity-down" (click)="downQuantity(product)"><</button>
+                <input type="text" class="btn-outline-secondary quantity-input" [(ngModel)]="product.quantity" (keyup)="onChangeQuantity($event, product)">
+                <button type="button" class="btn btn-secondary quantity-up" (click)="upQuantity(product)">></button>
+              </div>
             </div>
           </div>
         </div>

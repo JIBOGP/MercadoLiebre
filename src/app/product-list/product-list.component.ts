@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Product } from './product';
+import { Product } from './Product';
 
 @Component({
   selector: 'app-product-list',
@@ -15,7 +15,8 @@ export class ProductListComponent {
       price: 180000,
       offerprice: 165000,
       stock: 30,
-      stars: 3
+      stars: 3,
+      quantity: 0
     },
     {
       name: "Sofá Reclinable",
@@ -24,7 +25,8 @@ export class ProductListComponent {
       price: 250000,
       offerprice: 220000,
       stock: 20,
-      stars: 1
+      stars: 1,
+      quantity: 0
     },
     {
       name: "Escritorio de Oficina",
@@ -33,7 +35,8 @@ export class ProductListComponent {
       price: 120000,
       offerprice: 100000,
       stock: 25,
-      stars: 2
+      stars: 2,
+      quantity: 0
     },
     {
       name: "Lámpara de Pie",
@@ -42,7 +45,8 @@ export class ProductListComponent {
       price: 80000,
       offerprice: 75000,
       stock: 50,
-      stars: 4
+      stars: 4,
+      quantity: 0
     },
     {
       name: "Televisor LED 55 Pulgadas",
@@ -51,7 +55,8 @@ export class ProductListComponent {
       price: 350000,
       offerprice: 320000,
       stock: 15,
-      stars: 5
+      stars: 5,
+      quantity: 0
     },
     {
       name: "Batidora de Cocina",
@@ -60,7 +65,8 @@ export class ProductListComponent {
       price: 50000,
       offerprice: 45000,
       stock: 0,
-      stars: 5
+      stars: 5,
+      quantity: 0
     },
     {
       name: "Silla de Oficina Ergonómica",
@@ -69,7 +75,8 @@ export class ProductListComponent {
       price: 90000,
       offerprice: 85000,
       stock: 35,
-      stars: 0
+      stars: 0,
+      quantity: 0
     },
     {
       name: "Mesa de Centro de Vidrio",
@@ -78,7 +85,8 @@ export class ProductListComponent {
       price: 75000,
       offerprice: 70000,
       stock: 28,
-      stars: 0
+      stars: 0,
+      quantity: 0
     },
     {
       name: "Lámpara Colgante",
@@ -87,7 +95,8 @@ export class ProductListComponent {
       price: 120000,
       offerprice: 110000,
       stock: 18,
-      stars: 2
+      stars: 2,
+      quantity: 0
     },
     {
       name: "Refrigeradora Doble Puerta",
@@ -96,7 +105,8 @@ export class ProductListComponent {
       price: 180000,
       offerprice: 0,
       stock: 12,
-      stars: 4
+      stars: 4,
+      quantity: 0
     },
     {
       name: "Impresora Multifuncional",
@@ -105,7 +115,8 @@ export class ProductListComponent {
       price: 80000,
       offerprice: 75000,
       stock: 22,
-      stars: 3
+      stars: 3,
+      quantity: 0
     }
   ];
 
@@ -113,4 +124,25 @@ export class ProductListComponent {
     return Array.from({ length: stock }, (_, index) => index + 1);
   }
 
+  downQuantity(product: Product): void {
+    if (product.quantity > 0) {
+      product.quantity--;
+    }
+  }
+
+  upQuantity(product: Product): void {
+    if (product.quantity < product.stock) {
+      product.quantity++;
+    }
+  }
+
+  onChangeQuantity(event: { target: any; }, product: Product): void {
+    let value = event.target.value.trim();
+    value = value.replace(/^\D+/g, '');
+
+    const parsedValue = parseInt(value, 10);
+    product.quantity = isNaN(parsedValue) ? 0 : Math.max(0, parsedValue);
+
+    product.quantity = Math.min(product.quantity, product.stock);
+}
 }

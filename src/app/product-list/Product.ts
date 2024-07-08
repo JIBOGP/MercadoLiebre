@@ -6,4 +6,5 @@ export interface Product{
   offerprice: number;
   stock: number;
   stars:number;
+  quantity: number;
 }

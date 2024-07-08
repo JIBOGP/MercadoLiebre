@@ -1,0 +1,49 @@
+<div class="content">
+  <div class="row">
+    @for (product of products; track product.name) {
+    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0" [ngClass]="{'opacity-50': product.stock <= 0}">
+      <div class="card mb-4">
+        <img class="card-img-top" [src]="product.image" [alt]="product.name" />
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <p class="small"><a href="#!" class="text-muted">{{product.category}}</a></p>
+            <p class="small text-danger"><s *ngIf="product.offerprice != 0 && product.offerprice < product.price">{{product.price | currency}}</s></p>
+          </div>
+
+          <div class="d-flex justify-content-between mb-3">
+            <h5 class="mb-0 text-truncate me-2" title="{{product.name}}">{{product.name}}</h5>
+            <h5 class="text-dark mb-0">
+              <span *ngIf="product.offerprice != 0 && product.offerprice < product.price">{{product.offerprice | currency}}</span>
+              <span *ngIf="!(product.offerprice != 0 && product.offerprice < product.price)">{{product.price | currency}}</span>
+            </h5>
+          </div>
+
+          <div class="d-flex justify-content-between mb-2">
+            <p class="text-muted mb-0">Available: <span class="fw-bold">{{product.stock}}</span></p>
+            <div class="ms-auto text-warning">
+              <span *ngFor="let i of [1, 2, 3, 4, 5]">
+                <i *ngIf="i <= product.stars; else regularStar" class="fa-solid fa-star"></i>
+                <ng-template #regularStar>
+                  <i class="fa-regular fa-star"></i>
+                </ng-template>
+              </span>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <button class="btn btn-primary">Comprar</button>
+            <div class="input-group">
+              <label for="quantity" class="me-1"></label>
+              <select id="quantity" class="form-select" aria-label="Cantidad">
+                <option *ngFor="let count of getCount(product.stock)" [value]="count">{{count}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }@empty {
+    <div>No hay productos para mostrar.</div>
+    }
+  </div>
+</div>

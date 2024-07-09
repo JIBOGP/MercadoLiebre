@@ -9,7 +9,7 @@ Este es un proyecto de aplicación web desarrollado en Angular para simular un m
 - **Sede**: Tandil
 - **Seminario**: Angular
 
-- **StackBlitz**:
+- **StackBlitz**: https://stackblitz.com/~/github.com/JIBOGP/MercadoLiebre
 
 ## Funcionalidades
 

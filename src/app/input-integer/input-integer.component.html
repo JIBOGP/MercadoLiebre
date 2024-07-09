@@ -1,0 +1,7 @@
+<div class="input-group">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary quantity-down" (click)="downQuantity()"><</button>
+        <input type="text" class="btn-outline-secondary quantity-input" [(ngModel)]="quantity" (keyup)="onChangeQuantity($event)">
+        <button type="button" class="btn btn-secondary quantity-up" (click)="upQuantity()">></button>
+  </div>
+</div>

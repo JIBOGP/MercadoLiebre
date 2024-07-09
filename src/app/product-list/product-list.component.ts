@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from './Product';
+import { ProductCartService } from '../product-cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -120,29 +121,15 @@ export class ProductListComponent {
     }
   ];
 
-  getCount(stock: number): number[] {
-    return Array.from({ length: stock }, (_, index) => index + 1);
+  constructor(private cart: ProductCartService) {
   }
 
-  downQuantity(product: Product): void {
+
+  addToCart(product: Product): void {
     if (product.quantity > 0) {
-      product.quantity--;
+      this.cart.addToCart(product);
+      product.stock -= product.quantity;
+      product.quantity = 0;
     }
   }
-
-  upQuantity(product: Product): void {
-    if (product.quantity < product.stock) {
-      product.quantity++;
-    }
-  }
-
-  onChangeQuantity(event: { target: any; }, product: Product): void {
-    let value = event.target.value.trim();
-    value = value.replace(/^\D+/g, '');
-
-    const parsedValue = parseInt(value, 10);
-    product.quantity = isNaN(parsedValue) ? 0 : Math.max(0, parsedValue);
-
-    product.quantity = Math.min(product.quantity, product.stock);
-}
 }

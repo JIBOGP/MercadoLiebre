@@ -5,7 +5,7 @@ Este es un proyecto de aplicación web desarrollado en Angular para simular un m
 ## Datos personales
 - **Alumno**: Juan Ignacio Bertoldi
 - **Dni**: 41801889
-- **Email**: jobpgp@hotmail.com
+- **Email**: jibogp@hotmail.com
 - **Sede**: Tandil
 - **Seminario**: Angular
 

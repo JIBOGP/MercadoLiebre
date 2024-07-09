@@ -2,7 +2,7 @@
 
 Este es un proyecto de aplicación web desarrollado en Angular para simular un mercado en línea similar a Mercado Libre. Permite a los usuarios explorar productos, agregar artículos al carrito de compras y realizar compras simuladas.
 
-##Datos personales
+## Datos personales
 - **Alumno**: Juan Ignacio Bertoldi
 - **Dni**: 41801889
 - **Email**: jobpgp@hotmail.com

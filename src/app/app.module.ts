@@ -11,6 +11,7 @@ import { ShopAboutComponent } from './shop-about/shop-about.component';
 import { CartComponent } from './cart/cart.component';
 import { InputIntegerComponent } from './input-integer/input-integer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ShopCartComponent } from './shop-cart/shop-cart.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     ShopAboutComponent,
     CartComponent,
     InputIntegerComponent,
+    ShopCartComponent,
   ],
   imports: [
     BrowserModule,

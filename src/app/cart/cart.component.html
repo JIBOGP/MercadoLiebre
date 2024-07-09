@@ -23,7 +23,7 @@
                 </div>
 
             </th>
-            <th>{{product.quantity}}</th>
+            <th><app-input-integer [(quantity)]="product.quantity" [max]="product.stock" (click)="updateStock(product)"></app-input-integer></th>
             @if (product.offerprice!=0 && product.offerprice<product.price) {
                 <th class="offer">
                     <div class="oldprice small text-danger">{{product.price | currency}}</div>

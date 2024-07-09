@@ -31,5 +31,11 @@ export class ProductCartService {
     getCart(): Product[] {
         return this._cartList;
     }
+
+    removeProduct(pid: number) {
+        const updatedCart = this._cartList.filter(product => product.id !== pid);
+        this._cartList = updatedCart; // Actualiza el arreglo _cartList
+        this.cartList.next(updatedCart); // Notifica a los observadores del cambio
+    }
 }
 

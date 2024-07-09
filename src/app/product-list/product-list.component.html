@@ -1,7 +1,6 @@
 <div class="content">
   <div class="row">
-    @for (product of products; track product.name) {
-    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0" [ngClass]="{'opacity-50': product.stock <= 0}">
+    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0" *ngFor="let product of products$ | async" [ngClass]="{'opacity-50': product.stock <= 0}">
       <div class="card mb-4">
         <img class="card-img-top" [src]="product.image" [alt]="product.name" />
         <div class="card-body">
@@ -41,8 +40,5 @@
         </div>
       </div>
     </div>
-    }@empty {
-    <div>No hay productos para mostrar.</div>
-    }
   </div>
 </div>

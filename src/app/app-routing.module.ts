@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import path from 'path';
 import { ShopAboutComponent } from './shop-about/shop-about.component';
 import { ProductShopComponent } from './product-shop/product-shop.component';
+import { ShopCartComponent } from './shop-cart/shop-cart.component';
 
 const routes: Routes = [
     {
@@ -14,8 +15,7 @@ const routes: Routes = [
         component: ProductShopComponent
     }, {
         path: 'cart',
-        redirectTo: 'products',
-        pathMatch:'full'
+        component: ShopCartComponent
     }, {
         path: 'about',
         component: ShopAboutComponent

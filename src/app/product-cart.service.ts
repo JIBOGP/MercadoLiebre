@@ -25,8 +25,11 @@ export class ProductCartService {
         } else {
             item.quantity += product.quantity;
         }
-        console.log(this._cartList);
         this.cartList.next(this._cartList);
+    }
+
+    getCart(): Product[] {
+        return this._cartList;
     }
 }
 

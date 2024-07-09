@@ -17,29 +17,30 @@
                     <img [src]="product.image" [alt]="product.name" style="width: 45px; height: 45px"
                         class="rounded-circle" />
                     <div class="ms-3">
-                        <p class="fw-bold mb-1 text-truncate" >{{product.name}}</p>
+                        <p class="fw-bold mb-1 text-truncate">{{product.name}}</p>
                         <p class="text-muted mb-0">{{product.category}}</p>
                     </div>
                 </div>
 
             </th>
             <th>{{product.quantity}}</th>
-            @if (product.offerprice!=0 && product.offerprice<product.price) { <th class="offer">
-                <div class="oldprice small text-danger">{{product.price}}</div>
-                {{product.offerprice}}
+            @if (product.offerprice!=0 && product.offerprice<product.price) {
+                <th class="offer">
+                    <div class="oldprice small text-danger">{{product.price | currency}}</div>
+                    {{product.offerprice | currency}}
                 </th>
                 <th class="offer">
-                    <div class="oldprice small text-danger">{{product.quantity * product.price}}</div>
-                    {{product.quantity * product.offerprice}}
+                    <div class="oldprice small text-danger">{{product.quantity * product.price | currency}}</div>
+                    {{product.quantity * product.offerprice | currency}}
                 </th>
-                }@else{
+            }@else{
                 <th>
-                    {{product.price}}
+                    {{product.price | currency}}
                 </th>
                 <th>
-                    {{product.quantity * product.price}}
+                    {{product.quantity * product.price | currency}}
                 </th>
-                }
+            }
         </tr>
     </tbody>
     <tfoot>
@@ -48,7 +49,7 @@
             <th>Total</th>
             <th>-</th>
             <th>-</th>
-            <th>{{ getTotalPrice() }}</th>
+            <th>{{ getTotalPrice() | currency}}</th>
         </tr>
     </tfoot>
 </table>

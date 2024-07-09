@@ -16,6 +16,17 @@ export class CartComponent {
     }
 
     getTotalPrice(): number {
-        return 10;
+        let totalPrice = 0;
+        this.cartList$.subscribe(products => {
+            products.forEach(product => {
+                if (product.offerprice!=0 && product.offerprice<product.price) {
+                    totalPrice += product.offerprice*product.quantity;
+                }else{
+                    totalPrice += product.price*product.quantity;
+                }
+            });
+        });
+        return totalPrice;
     }
+
 }
